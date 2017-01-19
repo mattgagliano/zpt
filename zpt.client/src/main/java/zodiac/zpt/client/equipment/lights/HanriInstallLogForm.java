@@ -53,7 +53,7 @@ public class HanriInstallLogForm extends AbstractForm {
 	}
 
 	@Override
-	public Object computeExclusiveKey() { 
+	public Object computeExclusiveKey() {               //compute exclusive hanrilightid key for derby db
 	    return getHanriLightId();
 	}
 
