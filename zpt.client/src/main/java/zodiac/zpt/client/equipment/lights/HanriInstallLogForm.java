@@ -43,7 +43,7 @@ public class HanriInstallLogForm extends AbstractForm {
 	private String hanrilightId;
 
 	@FormData 
-	public String getHanriLightId() {
+	public String getHanriLightId() {                        //getter method for hanrilightid
 	    return hanrilightId;
 	}
 
