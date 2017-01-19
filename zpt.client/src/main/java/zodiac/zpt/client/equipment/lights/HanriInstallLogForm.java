@@ -48,7 +48,7 @@ public class HanriInstallLogForm extends AbstractForm {
 	}
 
 	@FormData 
-	public void setHanriLightId(String equipId) {
+	public void setHanriLightId(String equipId) {		//setter method for hanrilightid
 	    this.hanrilightId = equipId;
 	}
 
