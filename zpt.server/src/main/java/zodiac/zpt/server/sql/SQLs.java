@@ -488,6 +488,16 @@ public interface SQLs {
   String TESTSITES_DROP_TABLE = "DROP TABLE TESTSITES";
   String HANRILIGHT_DROP_TABLE = "DROP TABLE HANRILIGHT";
 
+  
+  String TESTSITES_LOOKUP = ""
+		  + "SELECT siteid, "
+	      + " lastname "
+	      + "FROM TESTSITES "
+	      + "WHERE 1 = 1 "
+	      + "<key> AND siteid = :key</key> " 
+	      + "<text> AND UPPER(name) LIKE UPPER(:text||'%') </text> " 
+	      + "<all></all>";
+		  
 
   // tag::organizationListing[]
   // tag::createDB[]

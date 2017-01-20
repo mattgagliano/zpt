@@ -1,6 +1,7 @@
 package zodiac.zpt.shared.equipment.lights;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.annotation.Generated;
 
@@ -42,6 +43,10 @@ public class HanriInstallLogFormData extends AbstractFormData {
 
 	public InstallerNames getInstallerNames() {
 		return getFieldByClass(InstallerNames.class);
+	}
+
+	public InstallerNamesListBox getInstallerNamesListBox() {
+		return getFieldByClass(InstallerNamesListBox.class);
 	}
 
 	public LightColor getLightColor() {
@@ -95,6 +100,11 @@ public class HanriInstallLogFormData extends AbstractFormData {
 	}
 
 	public static class InstallerNames extends AbstractValueFieldData<String> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class InstallerNamesListBox extends AbstractValueFieldData<Set<String>> {
 
 		private static final long serialVersionUID = 1L;
 	}

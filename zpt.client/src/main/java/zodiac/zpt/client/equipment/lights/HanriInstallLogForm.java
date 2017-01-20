@@ -1,26 +1,33 @@
 package zodiac.zpt.client.equipment.lights;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.IForm;
+import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
+import org.eclipse.scout.rt.client.ui.form.fields.listbox.AbstractListBox;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Order;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.CancelButton;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.InstallDateField;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.InstallerNamesField;
+import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.InstallerNamesListBoxField;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.LightColorField;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.NicheSizeBox;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.NotesField;
@@ -32,10 +39,11 @@ import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.SerialFiel
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.TestSiteField;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.VoltageGroup;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.WaterIntrusionBox;
+import zodiac.zpt.shared.equipment.TestSitesLookupCall;
 import zodiac.zpt.shared.equipment.lights.HanriInstallLogFormData;
 import zodiac.zpt.shared.equipment.lights.HanriLightColorLookupCall;
 import zodiac.zpt.shared.equipment.lights.IHanriInstallLogService;
-import zodiac.zpt.shared.testsites.TestSitesLookupCall;
+import zodiac.zpt.shared.testsites.AssignedTechLookupCall;
 
 @FormData(value = HanriInstallLogFormData.class, sdkCommand = FormData.SdkCommand.CREATE)
 public class HanriInstallLogForm extends AbstractForm {
@@ -91,8 +99,8 @@ public class HanriInstallLogForm extends AbstractForm {
 		return getFieldByClass(InstallDateField.class);
 	}
 
-	public InstallerNamesField getInstallerNamesField() {
-		return getFieldByClass(InstallerNamesField.class);
+	public InstallerNamesListBoxField getInstallerNamesListBoxField() {
+		return getFieldByClass(InstallerNamesListBoxField.class);
 	}
 
 	public SerialField getSerialField() {
@@ -127,6 +135,10 @@ public class HanriInstallLogForm extends AbstractForm {
 		return getFieldByClass(NotesField.class);
 	}
 
+	public InstallerNamesField getInstallerNamesField() {
+		return getFieldByClass(InstallerNamesField.class);
+	}
+
 	public NicheSizeBox getNicheSizeBox() {
 		return getFieldByClass(NicheSizeBox.class);
 	}
@@ -138,7 +150,7 @@ public class HanriInstallLogForm extends AbstractForm {
 	@Order(1000)
 	public class MainBox extends AbstractGroupBox {
 
-		//change back to smart field string
+		
 		@Order(1000)
 		public class TestSiteField extends AbstractSmartField<String> {
 			@Override
@@ -160,15 +172,41 @@ public class HanriInstallLogForm extends AbstractForm {
 				return TEXTS.get("InstallDate");
 			}
 		}
-
-		@Order(3000)
-		public class InstallerNamesField extends AbstractStringField { //AbstractListBox<String> {
+		
+		@Order(3500)
+		public class InstallerNamesField extends AbstractStringField {
 			@Override
 			protected String getConfiguredLabel() {
 				return TEXTS.get("InstallerNames");
 			}
 			
-		/*	@Override
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
+
+			@Override
+	        protected Class<? extends IValueField<Set<String>>> getConfiguredMasterField() {
+	          return HanriInstallLogForm.MainBox.InstallerNamesListBoxField.class;
+			}
+			
+			@Override
+	        protected void execChangedMasterValue(Object newMasterValue) {
+	          Set<String> keys = getInstallerNamesListBoxField().getCheckedKeys();
+	          if (!(keys.isEmpty())) {
+	        	  setValue(StringUtility.join(";", keys.toArray(new String[0])));
+	          }
+	        }
+		}
+
+		@Order(3000)
+		public class InstallerNamesListBoxField extends AbstractListBox<String> {
+			@Override
+			protected String getConfiguredLabel() {
+				return TEXTS.get("InstallerNames");
+			}
+			
+			@Override
 			protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
 				return AssignedTechLookupCall.class;
 			}
@@ -176,8 +214,16 @@ public class HanriInstallLogForm extends AbstractForm {
 			@Override
 			protected int getConfiguredGridH() {
 				return 3;
-			}*/
-		}
+			}
+			
+			@Override
+	        protected void execChangedValue() {
+	          Set<String> keys = getCheckedKeys();
+	          if (!(keys.isEmpty())) {
+	        	  getInstallerNamesField().setValue(StringUtility.join(";", keys.toArray(new String[0])));	        	  
+	          }
+	        }
+		}		
 
 		@Order(4000)
 		public class SerialField extends AbstractStringField {
@@ -434,6 +480,19 @@ public class HanriInstallLogForm extends AbstractForm {
 			importFormData(formData);
 
 			getForm().setSubTitle(calculateSubTitle());
+			
+			Set<String> keys = new HashSet<String>();
+			String namestring = getInstallerNamesField().getValue();
+			
+			if (namestring != null) {
+				String[] names = namestring.split("\\;");
+				
+				for (String name : names) {
+					keys.add(name);
+				}
+				
+				getInstallerNamesListBoxField().setValue(keys);
+			}
 		}
 
 		@Override
