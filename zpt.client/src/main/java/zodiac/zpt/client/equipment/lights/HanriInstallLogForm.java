@@ -44,6 +44,8 @@ import zodiac.zpt.shared.equipment.lights.HanriInstallLogFormData;
 import zodiac.zpt.shared.equipment.lights.HanriLightColorLookupCall;
 import zodiac.zpt.shared.equipment.lights.IHanriInstallLogService;
 import zodiac.zpt.shared.testsites.AssignedTechLookupCall;
+import zodiac.zpt.shared.testsites.TESTSITES_AutomationModelLookupCall;
+import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.OnSiteAutomationField;
 
 @FormData(value = HanriInstallLogFormData.class, sdkCommand = FormData.SdkCommand.CREATE)
 public class HanriInstallLogForm extends AbstractForm {
@@ -139,6 +141,10 @@ public class HanriInstallLogForm extends AbstractForm {
 		return getFieldByClass(InstallerNamesField.class);
 	}
 
+	public OnSiteAutomationField getOnSiteAutomationField() {
+		return getFieldByClass(OnSiteAutomationField.class);
+	}
+
 	public NicheSizeBox getNicheSizeBox() {
 		return getFieldByClass(NicheSizeBox.class);
 	}
@@ -149,7 +155,6 @@ public class HanriInstallLogForm extends AbstractForm {
 
 	@Order(1000)
 	public class MainBox extends AbstractGroupBox {
-
 		
 		@Order(1000)
 		public class TestSiteField extends AbstractSmartField<String> {
@@ -157,13 +162,12 @@ public class HanriInstallLogForm extends AbstractForm {
 			protected String getConfiguredLabel() {
 				return TEXTS.get("TestSite");
 			}
-
+		
 			@Override
 			protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
 				return TestSitesLookupCall.class;
 			}
 		}
-
 		
 		@Order(2000)
 		public class InstallDateField extends AbstractDateField {
@@ -187,15 +191,15 @@ public class HanriInstallLogForm extends AbstractForm {
 
 			@Override
 	        protected Class<? extends IValueField<Set<String>>> getConfiguredMasterField() {
-	          return HanriInstallLogForm.MainBox.InstallerNamesListBoxField.class;
+	            return HanriInstallLogForm.MainBox.InstallerNamesListBoxField.class;
 			}
 			
 			@Override
 	        protected void execChangedMasterValue(Object newMasterValue) {
-	          Set<String> keys = getInstallerNamesListBoxField().getCheckedKeys();
-	          if (!(keys.isEmpty())) {
-	        	  setValue(StringUtility.join(";", keys.toArray(new String[0])));
-	          }
+				Set<String> keys = getInstallerNamesListBoxField().getCheckedKeys();
+				if (!(keys.isEmpty())) {
+					setValue(StringUtility.join(";", keys.toArray(new String[0])));
+				}
 	        }
 		}
 
@@ -306,6 +310,51 @@ public class HanriInstallLogForm extends AbstractForm {
 				}
 			}
 		}
+
+
+		@Order(6500)
+		public class OnSiteAutomationField extends AbstractSmartField<String> {
+			
+			protected String sitename = null;
+			
+			@Override
+			protected String getConfiguredLabel() {
+				return TEXTS.get("On-SiteAutomation");
+			}
+
+			@Override
+			protected boolean getConfiguredEnabled() {
+				return false;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return true;
+			}
+			
+			@Override
+			protected Class<? extends IValueField<String>> getConfiguredMasterField() {
+				return MainBox.TestSiteField.class;
+			}
+			
+			@Override
+			protected void execChangedMasterValue(Object newMasterValue) {
+				
+				sitename = (String) newMasterValue;
+				
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!-------changed master value");
+				
+				Class<? extends ILookupCall<String>> lookupCallClass = TESTSITES_AutomationModelLookupCall.class;
+				
+			    if (lookupCallClass != null) {
+			    	System.out.println("lookup not null");
+			    	ILookupCall<String> call = BEANS.get(lookupCallClass);
+			        setLookupCall(call);
+			    }
+			}
+		}
+		
+		
 
 		@Order(7000)
 		public class OnAutomationBox extends AbstractRadioButtonGroup<String> {

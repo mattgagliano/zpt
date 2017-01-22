@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Jan 20 11:29:32 PST 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0159-bd5a-f8e1-0000059d9c50 
+Sat Jan 21 13:59:31 PST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0159-c30a-a4b0-000005951458 
 on database directory memory:C:\Users\gagli\git\zpt\zpt.server.app.dev\zpt-database with class loader sun.misc.Launcher$AppClassLoader@7d4991ad 
 Loaded from file:/C:/Users/gagli/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
 java.vendor=Oracle Corporation

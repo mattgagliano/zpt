@@ -35,6 +35,7 @@ public class DatabaseSetupService implements IDataStoreService {
           public void run() throws Exception {
             createTestSitesTable();
             createHanriLightTable();
+            createAutomationModelsTable();
           }
         };
 
@@ -53,8 +54,8 @@ public class DatabaseSetupService implements IDataStoreService {
     }
     
     if (CONFIG.getPropertyValue(DatabaseProperties.DatabaseAutoPopulateProperty.class)) {
-        SQL.insert(SQLs.TESTSITES_INSERT_SAMPLE + SQLs.TESTSITES_VALUES_01);
-        LOG.info("Database table 'TESTSITES' populated with sample data");
+        //SQL.insert(SQLs.TESTSITES_INSERT_SAMPLE + SQLs.TESTSITES_VALUES_01);
+        LOG.info("Database table 'TESTSITES' NOT populated with sample data");
     }
   }
   
@@ -65,8 +66,25 @@ public class DatabaseSetupService implements IDataStoreService {
 	  }
 	  
 	  if (CONFIG.getPropertyValue(DatabaseProperties.DatabaseAutoPopulateProperty.class)) {
-		  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_01);
+		  //SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_01);
 	      LOG.info("Database table 'HANRILIGHT' populated with sample data");
+	  }
+  }
+  
+  public void createAutomationModelsTable() {
+	  if (!getExistingTables().contains("AUTOMATIONMODELS")) {
+		  SQL.insert(SQLs.AUTOMATIONMODELS_CREATE_TABLE);
+		  LOG.info("Database table 'AUTOMATIONMODELS' created");
+	  }
+	  
+	  if (CONFIG.getPropertyValue(DatabaseProperties.DatabaseAutoPopulateProperty.class)) {
+		  SQL.insert(SQLs.AUTOMATIONMODELS_INSERT_SAMPLE + SQLs.AUTOMATIONMODELS_VALUES01);
+		  SQL.insert(SQLs.AUTOMATIONMODELS_INSERT_SAMPLE + SQLs.AUTOMATIONMODELS_VALUES02);
+		  SQL.insert(SQLs.AUTOMATIONMODELS_INSERT_SAMPLE + SQLs.AUTOMATIONMODELS_VALUES03);
+		  SQL.insert(SQLs.AUTOMATIONMODELS_INSERT_SAMPLE + SQLs.AUTOMATIONMODELS_VALUES04);
+		  SQL.insert(SQLs.AUTOMATIONMODELS_INSERT_SAMPLE + SQLs.AUTOMATIONMODELS_VALUES05);
+		  SQL.insert(SQLs.AUTOMATIONMODELS_INSERT_SAMPLE + SQLs.AUTOMATIONMODELS_VALUES06);
+		  LOG.info("Database table 'AUTOMATIONMODELS' populated with sample data");
 	  }
   }
 

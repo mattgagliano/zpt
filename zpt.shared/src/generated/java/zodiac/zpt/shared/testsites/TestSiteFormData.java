@@ -24,12 +24,16 @@ public class TestSiteFormData extends AbstractFormData {
 		return getFieldByClass(AssignedTech.class);
 	}
 
-	public AutomationNotes getAutomationNotes() {
-		return getFieldByClass(AutomationNotes.class);
+	public AutomationBrand getAutomationBrand() {
+		return getFieldByClass(AutomationBrand.class);
 	}
 
-	public AutomationType getAutomationType() {
-		return getFieldByClass(AutomationType.class);
+	public AutomationModel getAutomationModel() {
+		return getFieldByClass(AutomationModel.class);
+	}
+
+	public AutomationNotes getAutomationNotes() {
+		return getFieldByClass(AutomationNotes.class);
 	}
 
 	public City getCity() {
@@ -64,10 +68,6 @@ public class TestSiteFormData extends AbstractFormData {
 		return getFieldByClass(GasType.class);
 	}
 
-	public HasAutomation getHasAutomation() {
-		return getFieldByClass(HasAutomation.class);
-	}
-
 	public HasIAqualink getHasIAqualink() {
 		return getFieldByClass(HasIAqualink.class);
 	}
@@ -90,10 +90,6 @@ public class TestSiteFormData extends AbstractFormData {
 
 	public LastName getLastName() {
 		return getFieldByClass(LastName.class);
-	}
-
-	public MarketingPool getMarketingPool() {
-		return getFieldByClass(MarketingPool.class);
 	}
 
 	public MarketingPoolGroup getMarketingPoolGroup() {
@@ -199,12 +195,17 @@ public class TestSiteFormData extends AbstractFormData {
 		private static final long serialVersionUID = 1L;
 	}
 
-	public static class AutomationNotes extends AbstractValueFieldData<String> {
+	public static class AutomationBrand extends AbstractValueFieldData<String> {
 
 		private static final long serialVersionUID = 1L;
 	}
 
-	public static class AutomationType extends AbstractValueFieldData<String> {
+	public static class AutomationModel extends AbstractValueFieldData<String> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class AutomationNotes extends AbstractValueFieldData<String> {
 
 		private static final long serialVersionUID = 1L;
 	}
@@ -249,11 +250,6 @@ public class TestSiteFormData extends AbstractFormData {
 		private static final long serialVersionUID = 1L;
 	}
 
-	public static class HasAutomation extends AbstractValueFieldData<String> {
-
-		private static final long serialVersionUID = 1L;
-	}
-
 	public static class HasIAqualink extends AbstractValueFieldData<String> {
 
 		private static final long serialVersionUID = 1L;
@@ -280,11 +276,6 @@ public class TestSiteFormData extends AbstractFormData {
 	}
 
 	public static class LastName extends AbstractValueFieldData<String> {
-
-		private static final long serialVersionUID = 1L;
-	}
-
-	public static class MarketingPool extends AbstractValueFieldData<String> {
 
 		private static final long serialVersionUID = 1L;
 	}

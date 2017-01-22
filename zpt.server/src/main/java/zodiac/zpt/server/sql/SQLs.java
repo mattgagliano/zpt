@@ -36,6 +36,12 @@ public interface SQLs {
 		  + "          waterintrusion VARCHAR(64), "
 		  + "          notes VARCHAR(64) "
 		  + "          )";
+  
+  String AUTOMATIONMODELS_CREATE_TABLE = ""
+  		+ "CREATE    TABLE AUTOMATIONMODELS "
+  		+ "			 (modelname VARCHAR(64), "
+  		+ "			  brand VARCHAR(64)"
+  		+ "			  )";
 		  
   String TESTSITES_CREATE_TABLE = ""
       + "CREATE   TABLE TESTSITES "
@@ -62,8 +68,8 @@ public interface SQLs {
       + "          eqabovebelowwater VARCHAR(64), "
       + "          servicecontact VARCHAR(64), "
       + "          poolnotes VARCHAR(64), "
-      + "          hasautomation VARCHAR(64), "
-      + "          automationtype VARCHAR(64), "
+      + "          automationbrand VARCHAR(64), "
+      + "          automationmodel VARCHAR(64), "
       + "          hasiaqualink VARCHAR(64), "
       + "          iaqualinkdevicenumber VARCHAR(64), "
       + "          automationnotes VARCHAR(64), "
@@ -130,8 +136,8 @@ public interface SQLs {
 	      + "         eqabovebelowwater, "
 	      + "         servicecontact, "
 	      + "         poolnotes, "
-	      + "         hasautomation, "
-	      + "         automationtype, "
+	      + "         automationbrand, "
+	      + "         automationmodel, "
 	      + "         hasiaqualink, "
 	      + "         iaqualinkdevicenumber, "
 	      + "         automationnotes, "
@@ -148,6 +154,11 @@ public interface SQLs {
 	      + "         sitenotes "
 	      + "FROM     TESTSITES ";
   
+  String AUTOMATIONMODELS_INSERT_SAMPLE = ""
+  		+ "INSERT   INTO AUTOMATIONMODELS "
+  		+ "			(modelname, "
+  		+ "			 brand) ";
+  		  
   String HANRILIGHT_INSERT_SAMPLE = ""
 		  + "INSERT  INTO HANRILIGHT "
 		  + "        (hanrilightid, "
@@ -189,8 +200,8 @@ public interface SQLs {
 	      + "         eqabovebelowwater, "
 	      + "         servicecontact, "
 	      + "         poolnotes, "
-	      + "         hasautomation, "
-	      + "         automationtype, "
+	      + "         automationbrand, "
+	      + "         automationmodel, "
 	      + "         hasiaqualink, "
 	      + "         iaqualinkdevicenumber, "
 	      + "         automationnotes, "
@@ -257,8 +268,8 @@ public interface SQLs {
 	      + "         eqabovebelowwater, "
 	      + "         servicecontact, "
 	      + "         poolnotes, "
-	      + "         hasautomation, "
-	      + "         automationtype, "
+	      + "         automationbrand, "
+	      + "         automationmodel, "
 	      + "         hasiaqualink, "
 	      + "         iaqualinkdevicenumber, "
 	      + "         automationnotes, "
@@ -297,8 +308,8 @@ public interface SQLs {
 	      + "         :EqAboveBelowWater, "
 	      + "         :ServiceContact, "
 	      + "         :PoolNotes, "
-	      + "         :HasAutomation, "
-	      + "         :AutomationType, "
+	      + "         :AutomationBrand, "
+	      + "         :AutomationModel, "
 	      + "         :HasIAqualink, "
 	      + "         :IAqualinkDeviceNumber, "
 	      + "         :AutomationNotes, "
@@ -354,8 +365,8 @@ public interface SQLs {
 	      + "         eqabovebelowwater = :EqAboveBelowWater, "
 	      + "         servicecontact = :ServiceContact, "
 	      + "         poolnotes = :PoolNotes, "
-	      + "         hasautomation = :HasAutomation, "
-	      + "         automationtype = :AutomationType, "
+	      + "         automationbrand = :AutomationBrand, "
+	      + "         automationmodel = :AutomationModel, "
 	      + "         hasiaqualink = :HasIAqualink, "
 	      + "         iaqualinkdevicenumber = :IAqualinkDeviceNumber, "
 	      + "         automationnotes = :AutomationNotes, "
@@ -386,6 +397,30 @@ public interface SQLs {
 		  + "         :{page.SequenceCorrectBox}, "
 		  + "         :{page.WaterIntrusionBox}, "
 	      + "         :{page.Notes}";
+  
+  String AUTOMATIONMODELS_VALUES01 = ""
+	  		+ "VALUES  ('Aqualink PDA', "
+	  		+ "			'Jandy')";
+  
+  String AUTOMATIONMODELS_VALUES02 = ""
+	  		+ "VALUES  ('Aqualink RS', "
+	  		+ "			'Jandy')";
+  
+  String AUTOMATIONMODELS_VALUES03 = ""
+	  		+ "VALUES  ('Aqualink Z4', "
+	  		+ "			'Jandy')";
+  
+  String AUTOMATIONMODELS_VALUES04 = ""
+	  		+ "VALUES  ('Pentair Intellitouch', "
+	  		+ "			'Competitor')";
+  
+  String AUTOMATIONMODELS_VALUES05 = ""
+	  		+ "VALUES  ('Hayward Box', "
+	  		+ "			'Competitor')";
+  
+  String AUTOMATIONMODELS_VALUES06 = ""
+	  		+ "VALUES  ('Chemtrol', "
+	  		+ "			'Competitor')";	
   
   String HANRILIGHT_VALUES_01 = ""
 		  + "VALUES  ('hanrilight01', "
@@ -426,8 +461,8 @@ public interface SQLs {
 		  + "         :{page.EqAboveBelowWater}, "
 		  + "         :{page.ServiceContact}, "
 		  + "         :{page.PoolNotes}, "
-		  + "         :{page.HasAutomation}, "
-		  + "         :{page.AutomationType}, "
+		  + "         :{page.AutomationBrand}, "
+		  + "         :{page.AutomationModel}, "
 		  + "         :{page.HasIAqualink}, "
 		  + "         :{page.IAqualinkDeviceNumber}, "
 		  + "         :{page.AutomationNotes}, "
@@ -487,7 +522,7 @@ public interface SQLs {
 
   String TESTSITES_DROP_TABLE = "DROP TABLE TESTSITES";
   String HANRILIGHT_DROP_TABLE = "DROP TABLE HANRILIGHT";
-
+  String AUTOMATIONMODELS_DROP_TABLE = "DROP TABLE AUTOMATIONMODELS";
   
   String TESTSITES_LOOKUP = ""
 		  + "SELECT siteid, "
@@ -495,6 +530,22 @@ public interface SQLs {
 	      + "FROM TESTSITES "
 	      + "WHERE 1 = 1 "
 	      + "<key> AND siteid = :key</key> " 
+	      + "<text> AND UPPER(name) LIKE UPPER(:text||'%') </text> " 
+	      + "<all></all>";
+  
+  String AUTOMATIONMODELS_LOOKUP = ""
+  		+ "SELECT brand,"
+  		+ " modelname "
+  		+ "FROM AUTOMATIONMODELS "
+  		+ "WHERE 1 = 1 "
+  		+ "<key> AND brand = :key</key> ";
+		  
+  String TESTSITES_AutomationModelLOOKUP = ""
+		  + "SELECT lastname, "
+	      + " automationmodel "
+	      + "FROM TESTSITES "
+	      + "WHERE 1 = 1 "
+	      + "<key> AND lastname = :key</key> " 
 	      + "<text> AND UPPER(name) LIKE UPPER(:text||'%') </text> " 
 	      + "<all></all>";
 		  

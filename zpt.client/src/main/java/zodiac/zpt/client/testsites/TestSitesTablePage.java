@@ -118,12 +118,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			return getColumnSet().getColumnByClass(PoolNotesColumn.class);
 		}
 
-		public HasAutomationColumn getHasAutomationColumn() {
-			return getColumnSet().getColumnByClass(HasAutomationColumn.class);
+		public AutomationBrandColumn getAutomationBrandColumn() {
+			return getColumnSet().getColumnByClass(AutomationBrandColumn.class);
 		}
 
-		public AutomationTypeColumn getAutomationTypeColumn() {
-			return getColumnSet().getColumnByClass(AutomationTypeColumn.class);
+		public AutomationModelColumn getAutomationModelColumn() {
+			return getColumnSet().getColumnByClass(AutomationModelColumn.class);
 		}
 
 		public HasIAqualinkColumn getHasIAqualinkColumn() {
@@ -511,10 +511,10 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 		}
 
 		@Order(23000)
-		public class HasAutomationColumn extends AbstractStringColumn {
+		public class AutomationBrandColumn extends AbstractStringColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("HasAutomation");
+				return TEXTS.get("AutomationBrand");
 			}
 
 			@Override
@@ -524,10 +524,10 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 		}
 
 		@Order(24000)
-		public class AutomationTypeColumn extends AbstractStringColumn {
+		public class AutomationModelColumn extends AbstractStringColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("AutomationType");
+				return TEXTS.get("AutomationModel");
 			}
 
 			@Override

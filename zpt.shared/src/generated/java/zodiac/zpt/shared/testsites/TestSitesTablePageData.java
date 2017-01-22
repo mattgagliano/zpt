@@ -75,8 +75,8 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 		public static final String eqAboveBelowWater = "eqAboveBelowWater";
 		public static final String serviceContact = "serviceContact";
 		public static final String poolNotes = "poolNotes";
-		public static final String hasAutomation = "hasAutomation";
-		public static final String automationType = "automationType";
+		public static final String automationBrand = "automationBrand";
+		public static final String automationModel = "automationModel";
 		public static final String hasIAqualink = "hasIAqualink";
 		public static final String iAqualinkDeviceNumber = "iAqualinkDeviceNumber";
 		public static final String automationNotes = "automationNotes";
@@ -114,8 +114,8 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 		private String m_eqAboveBelowWater;
 		private String m_serviceContact;
 		private String m_poolNotes;
-		private String m_hasAutomation;
-		private String m_automationType;
+		private String m_automationBrand;
+		private String m_automationModel;
 		private String m_hasIAqualink;
 		private String m_iAqualinkDeviceNumber;
 		private String m_automationNotes;
@@ -315,20 +315,20 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 			m_poolNotes = newPoolNotes;
 		}
 
-		public String getHasAutomation() {
-			return m_hasAutomation;
+		public String getAutomationBrand() {
+			return m_automationBrand;
 		}
 
-		public void setHasAutomation(String newHasAutomation) {
-			m_hasAutomation = newHasAutomation;
+		public void setAutomationBrand(String newAutomationBrand) {
+			m_automationBrand = newAutomationBrand;
 		}
 
-		public String getAutomationType() {
-			return m_automationType;
+		public String getAutomationModel() {
+			return m_automationModel;
 		}
 
-		public void setAutomationType(String newAutomationType) {
-			m_automationType = newAutomationType;
+		public void setAutomationModel(String newAutomationModel) {
+			m_automationModel = newAutomationModel;
 		}
 
 		public String getHasIAqualink() {

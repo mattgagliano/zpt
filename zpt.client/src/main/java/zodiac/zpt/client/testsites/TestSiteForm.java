@@ -6,6 +6,7 @@ import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.IForm;
+import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
@@ -28,9 +29,9 @@ import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import zodiac.zpt.client.common.AbstractUrlImageField;
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox;
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox;
+import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox.AutomationBrand;
+import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox.AutomationModel;
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox.AutomationNotesField;
-import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox.AutomationType;
-import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox.HasAutomation;
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox.HasIAqualink;
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.AutomationBox.IAqualinkDeviceNumber;
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.BottomHalfBox.CleanerInfoBox;
@@ -85,6 +86,7 @@ import zodiac.zpt.client.testsites.TestSiteForm.MainBox.TopHalfBox.TopInfoBox.Te
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.TopHalfBox.TopInfoBox.TechNDABox.AssignedTechField;
 import zodiac.zpt.client.testsites.TestSiteForm.MainBox.TopHalfBox.TopInfoBox.TechNDABox.NDAIssueDateField;
 import zodiac.zpt.shared.testsites.AssignedTechLookupCall;
+import zodiac.zpt.shared.testsites.AutomationModelsLookupCall;
 import zodiac.zpt.shared.testsites.ITestSiteService;
 import zodiac.zpt.shared.testsites.PoolFinishLookupCall;
 import zodiac.zpt.shared.testsites.PoolLayoutLookupCall;
@@ -321,19 +323,19 @@ private String siteId;
 		return getFieldByClass(AutomationBox.class);
 	}
 
-	public HasAutomation getHasAutomationBox() {
-		return getFieldByClass(HasAutomation.class);
+	public AutomationBrand getAutomationBrand() {
+		return getFieldByClass(AutomationBrand.class);
 	}
 
-	public AutomationType getAutomationTypeBox() {
-		return getFieldByClass(AutomationType.class);
+	public AutomationModel getAutomationModel() {
+		return getFieldByClass(AutomationModel.class);
 	}
 
-	public HasIAqualink getHasIaqualinkBox() {
+	public HasIAqualink getHasIAqualink() {
 		return getFieldByClass(HasIAqualink.class);
 	}
 
-	public IAqualinkDeviceNumber getIaqualinkDevNumField() {
+	public IAqualinkDeviceNumber getIAqualinkDeviceNumber() {
 		return getFieldByClass(IAqualinkDeviceNumber.class);
 	}
 
@@ -742,7 +744,7 @@ private String siteId;
 				public class PoolVolumeField extends AbstractIntegerField {
 					@Override
 					protected String getConfiguredLabel() {
-						return TEXTS.get("PoolVolume");
+						return TEXTS.get("PoolVolumeGal");
 					}
 
 					@Override
@@ -793,22 +795,7 @@ private String siteId;
 					protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
 					    return PoolFinishLookupCall.class;
 					}
-				}
-
-				@Order(5300)
-				public class MarketingPoolField extends AbstractStringField {
-					@Override
-					protected String getConfiguredLabel() {
-						return TEXTS.get("MarketingPool");
-					}
-
-					@Override
-					protected int getConfiguredMaxLength() {
-						return 128;
-					}
-				}
-
-				
+				}				
 				
 				@Order(5500)		
 				public class MarketingPoolGroup extends AbstractRadioButtonGroup<String> {
@@ -968,10 +955,10 @@ private String siteId;
 				}
 
 				@Order(1000)
-				public class HasAutomation extends AbstractRadioButtonGroup<String> {
+				public class AutomationBrand extends AbstractRadioButtonGroup<String> {
 					@Override
 					protected String getConfiguredLabel() {
-						return TEXTS.get("HasAutomation");
+						return TEXTS.get("AutomationBrand");
 					}
 
 					@Order(1000)
@@ -989,16 +976,16 @@ private String siteId;
 					}
 
 					@Order(2000)
-					public class NonJandyButton extends AbstractRadioButton<String> {
+					public class CompetitorButton extends AbstractRadioButton<String> {
 
 						@Override
 						protected String getConfiguredRadioValue() {
-							return "Non-Jandy";
+							return "Competitor";
 						}
 						
 						@Override
 						protected String getConfiguredLabel() {
-							return TEXTS.get("Non-Jandy");
+							return TEXTS.get("Competitor");
 						}
 					}
 
@@ -1017,63 +1004,69 @@ private String siteId;
 				}
 
 				@Order(2000)
-				public class AutomationType extends AbstractRadioButtonGroup<String> {
+				public class AutomationModel extends AbstractSmartField<String> {
 
+					protected String brand = "None";
+					
 					@Override
 					protected String getConfiguredLabel() {
-						return TEXTS.get("AutomationType");
+						return TEXTS.get("AutomationModel");
 					}
-
-					@Order(1000)
-					public class InfinityButton extends AbstractRadioButton<String> {
-						@Override
-						protected String getConfiguredRadioValue() {
-							return "Infinity";
-						}
+					
+					@Override
+					protected boolean getConfiguredVisible() {
+						return false;
+					}
+					
+					@Override
+					protected boolean getConfiguredEnabled() {
+						return false;
+					}
+					
+					@Override
+					protected boolean getConfiguredMandatory() {
+						return false;
+					}
+					
+					@Override
+					protected Class<? extends IValueField<String>> getConfiguredMasterField() {
+						return MainBox.BottomHalfBox.AutomationBox.AutomationBrand.class;
+					}
+					
+					@Override
+					protected void execChangedMasterValue(Object newMasterValue) {
 						
-						@Override
-						protected String getConfiguredLabel() {
-							return TEXTS.get("Infinity");
-						}
-					}
-
-					@Order(2000)
-					public class PDAButton extends AbstractRadioButton<String> {
-						@Override
-						protected String getConfiguredRadioValue() {
-							return "PDA";
-						}
-										
-						@Override
-						protected String getConfiguredLabel() {
-							return TEXTS.get("PDA");
-						}
-					}
-
-					@Order(3000)
-					public class RSButton extends AbstractRadioButton<String> {
-						@Override
-						protected String getConfiguredRadioValue() {
-							return "RS";
-						}
+						brand = (String) newMasterValue;
+												
+						System.out.println(brand);
 						
-						@Override
-						protected String getConfiguredLabel() {
-							return TEXTS.get("RS");
+						if (brand.matches("Jandy|Competitor")) {
+							
+							System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------brand match changed");
+							
+							setEnabled(true);
+							setVisible(true);
+							setMandatory(true);
+							
+							Class<? extends ILookupCall<String>> lookupCallClass = getConfiguredLookupCall();
+							
+						    if (lookupCallClass != null) {
+						    	ILookupCall<String> call = BEANS.get(lookupCallClass);
+						        setLookupCall(call);
+						    }
+						}
+						else {
+							setEnabled(false);
+							setVisible(false);
+							setMandatory(false);
+							setValue(null);
 						}
 					}
-
-					@Order(4000)
-					public class Z4Button extends AbstractRadioButton<String> {
-						@Override
-						protected String getConfiguredRadioValue() {
-							return "Z4";
-						}
-						
-						@Override
-						protected String getConfiguredLabel() {
-							return TEXTS.get("Z4");
-						}
+					
+					@Override
+					protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
+												
+						return AutomationModelsLookupCall.class;
 					}
 				}
 
@@ -1082,6 +1075,55 @@ private String siteId;
 					@Override
 					protected String getConfiguredLabel() {
 						return TEXTS.get("HasIAqualink");
+					}
+					
+					@Override
+					protected boolean getConfiguredVisible() {
+						return false;
+					}
+					
+					@Override
+					protected boolean getConfiguredMandatory() {
+						return false;
+					}
+					
+					@Override
+			        protected Class<? extends IValueField<String>> getConfiguredMasterField() {
+			            return TestSiteForm.MainBox.BottomHalfBox.AutomationBox.AutomationBrand.class;
+					}
+					
+					@Override
+			        protected void execChangedMasterValue(Object newMasterValue) {
+					
+						String brand = (String) newMasterValue;
+						
+						if (brand == "Jandy") {
+							setEnabled(true);
+							setVisible(true);
+							setMandatory(true);
+						}
+						else {
+							setEnabled(false);
+							setVisible(false);
+							setValue(null);
+							setMandatory(false);
+						}
+					}
+					
+					@Override
+					protected void execChangedValue() {
+						
+						if (getValue() == "Yes") {
+							getIAqualinkDeviceNumber().setEnabled(true);
+							getIAqualinkDeviceNumber().setVisible(true);
+							getIAqualinkDeviceNumber().setMandatory(true);
+						}
+						else {
+							getIAqualinkDeviceNumber().setValue(null);
+							getIAqualinkDeviceNumber().setEnabled(false);
+							getIAqualinkDeviceNumber().setVisible(false);
+							getIAqualinkDeviceNumber().setMandatory(false);
+						}
 					}
 
 					@Order(1000)
@@ -1117,10 +1159,36 @@ private String siteId;
 					protected String getConfiguredLabel() {
 						return TEXTS.get("IAqualinkDevice");
 					}
+					
+					@Override
+					protected boolean getConfiguredVisible() {
+						return false;
+					}
 
 					@Override
 					protected int getConfiguredMaxLength() {
 						return 128;
+					}
+					
+					@Override
+					protected Class<? extends IValueField<String>> getConfiguredMasterField() {
+						return MainBox.BottomHalfBox.AutomationBox.HasIAqualink.class;
+					}
+					
+					@Override
+			        protected void execChangedMasterValue(Object newMasterValue) {
+					
+						String hasIAqualink = (String) newMasterValue;
+						
+						if (hasIAqualink == "Yes") {
+							setEnabled(true);
+							setVisible(true);
+						}
+						else {
+							setEnabled(false);
+							setVisible(false);
+							setValue(null);
+						}
 					}
 				}
 
@@ -1201,12 +1269,12 @@ private String siteId;
 					public class BoosterPumpButton extends AbstractRadioButton<String> {
 						@Override
 						protected String getConfiguredRadioValue() {
-							return "BoosterPump";
+							return "Booster";
 						}
 						
 						@Override
 						protected String getConfiguredLabel() {
-							return TEXTS.get("BoosterPump");
+							return TEXTS.get("Booster");
 						}
 					}
 
@@ -1289,6 +1357,25 @@ private String siteId;
 						@Override
 						protected String getConfiguredLabel() {
 							return TEXTS.get("Pressure");
+						}
+						
+						@Override
+						protected Class<? extends IValueField<String>> getConfiguredMasterField() {
+							return MainBox.BottomHalfBox.CleanerInfoBox.PressureType.class;
+						}
+						
+						@Override
+						protected void execChangedMasterValue(Object newMasterValue) {
+							
+							String pressureType = (String) newMasterValue;
+							
+							if (pressureType == "None") {
+								setVisible(false);
+								setValue(null);
+							}
+							else {
+								setVisible(true);
+							}
 						}
 					}
 
