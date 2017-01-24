@@ -33,8 +33,9 @@ public class DatabaseSetupService implements IDataStoreService {
 
           @Override
           public void run() throws Exception {
-            createTestSitesTable();
-            createHanriLightTable();
+        	  SQLm.Create_ZPT_TABLES();
+            //createTestSitesTable();
+            //createHanriLightTable();
           }
         };
 
@@ -48,7 +49,7 @@ public class DatabaseSetupService implements IDataStoreService {
 
   public void createTestSitesTable() {
     if (!getExistingTables().contains("TESTSITES")) {
-      SQL.insert(SQLs.TESTSITES_CREATE_TABLE);
+      SQL.insert(SQLm.Create_Table("TESTSITES"));
       LOG.info("Database table 'TESTSITES' created");
     }
     
@@ -56,6 +57,15 @@ public class DatabaseSetupService implements IDataStoreService {
         SQL.insert(SQLs.TESTSITES_INSERT_SAMPLE + SQLs.TESTSITES_VALUES_01);
         LOG.info("Database table 'TESTSITES' populated with sample data");
     }
+  }
+  
+  public void createTables() {
+	  //write create ZPT_TABLES
+	  //read table names out of ZPT_TABLES
+	  //for loop create & auto populate
+	  
+	  SQLm.Create_ZPT_TABLES();
+	  
   }
   
   public void createHanriLightTable() {
@@ -72,7 +82,7 @@ public class DatabaseSetupService implements IDataStoreService {
 
   private Set<String> getExistingTables() {
     StringArrayHolder tables = new StringArrayHolder();
-    SQL.selectInto(SQLs.SELECT_TABLE_NAMES, new NVPair("result", tables)); // <1>
+    SQL.selectInto(SQLm.Select_Table_Names(), new NVPair("result", tables)); // <1>
     return CollectionUtility.hashSet(tables.getValue());
   }
   // end::service[]
@@ -85,8 +95,10 @@ public class DatabaseSetupService implements IDataStoreService {
 
   @Override
   public void createDataStore() {
-    createTestSitesTable();
-    createHanriLightTable();
+    
+	 createTables();
+	  //createTestSitesTable();
+    //createHanriLightTable();
   }
   // tag::service[]
 }

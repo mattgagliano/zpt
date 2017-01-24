@@ -15,10 +15,10 @@ package zodiac.zpt.server.sql;
 public interface SQLs {
   //end::organizationListing[]
 
-  String SELECT_TABLE_NAMES = ""
+ /* String SELECT_TABLE_NAMES = ""
       + "SELECT   UPPER(tablename) "
       + "FROM     sys.systables "
-      + "INTO     :result"; // <1>
+      + "INTO     :result"; // <1>*/
 
   String HANRILIGHT_CREATE_TABLE = ""
 		  + "CREATE   TABLE HANRILIGHT "

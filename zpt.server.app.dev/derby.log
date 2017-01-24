@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Thu Jan 19 14:38:58 PST 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0159-b8e2-09ef-000002b29c70 
-on database directory memory:C:\Users\matt.gagliano\Desktop\ZPT_desktop\zpt\zpt.server.app.dev\zpt-database with class loader sun.misc.Launcher$AppClassLoader@7d4991ad 
+Mon Jan 23 11:52:44 PST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0159-cce3-47af-000002b60278 
+on database directory memory:C:\Users\matt.gagliano\Desktop\git\zpt\zpt.server.app.dev\zpt-database with class loader sun.misc.Launcher$AppClassLoader@7d4991ad 
 Loaded from file:/C:/Users/matt.gagliano/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_112-b15
-user.dir=C:\Users\matt.gagliano\Desktop\ZPT_desktop\zpt\zpt.server.app.dev
+user.dir=C:\Users\matt.gagliano\Desktop\git\zpt\zpt.server.app.dev
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
