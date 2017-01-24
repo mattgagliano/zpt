@@ -26,7 +26,7 @@ public class SQLm {
 		tablenames.add("table2");
 		tablesizes.add(72);
 		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 		System.out.println(tablenames);
 		System.out.println(tablesizes);
 		
