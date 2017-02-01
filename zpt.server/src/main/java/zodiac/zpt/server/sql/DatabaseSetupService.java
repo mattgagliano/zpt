@@ -33,9 +33,9 @@ public class DatabaseSetupService implements IDataStoreService {
 
           @Override
           public void run() throws Exception {
-        	  SQLm.Create_ZPT_TABLES();
-            //createTestSitesTable();
-            //createHanriLightTable();
+        	  //SQLm.Create_ZPT_TABLES();
+              createTestSitesTable();
+              createHanriLightTable();
           }
         };
 
@@ -96,9 +96,9 @@ public class DatabaseSetupService implements IDataStoreService {
   @Override
   public void createDataStore() {
     
-	 createTables();
-	  //createTestSitesTable();
-    //createHanriLightTable();
+	 //createTables();
+	  createTestSitesTable();
+    createHanriLightTable();
   }
   // tag::service[]
 }

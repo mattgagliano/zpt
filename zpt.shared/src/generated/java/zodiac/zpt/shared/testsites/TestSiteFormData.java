@@ -92,10 +92,6 @@ public class TestSiteFormData extends AbstractFormData {
 		return getFieldByClass(LastName.class);
 	}
 
-	public MarketingPool getMarketingPool() {
-		return getFieldByClass(MarketingPool.class);
-	}
-
 	public MarketingPoolGroup getMarketingPoolGroup() {
 		return getFieldByClass(MarketingPoolGroup.class);
 	}
@@ -280,11 +276,6 @@ public class TestSiteFormData extends AbstractFormData {
 	}
 
 	public static class LastName extends AbstractValueFieldData<String> {
-
-		private static final long serialVersionUID = 1L;
-	}
-
-	public static class MarketingPool extends AbstractValueFieldData<String> {
 
 		private static final long serialVersionUID = 1L;
 	}

@@ -795,21 +795,6 @@ private String siteId;
 					}
 				}
 
-				@Order(5300)
-				public class MarketingPoolField extends AbstractStringField {
-					@Override
-					protected String getConfiguredLabel() {
-						return TEXTS.get("MarketingPool");
-					}
-
-					@Override
-					protected int getConfiguredMaxLength() {
-						return 128;
-					}
-				}
-
-				
-				
 				@Order(5500)		
 				public class MarketingPoolGroup extends AbstractRadioButtonGroup<String> {
 					@Override
