@@ -49,12 +49,15 @@ public class DatabaseSetupService implements IDataStoreService {
 
   public void createTestSitesTable() {
     if (!getExistingTables().contains("TESTSITES")) {
-      SQL.insert(SQLm.Create_Table("TESTSITES"));
-      LOG.info("Database table 'TESTSITES' created");
+    	SQL.insert(SQLs.TESTSITES_CREATE_TABLE);
+        LOG.info("Database table 'TESTSITES' created");
     }
     
     if (CONFIG.getPropertyValue(DatabaseProperties.DatabaseAutoPopulateProperty.class)) {
         SQL.insert(SQLs.TESTSITES_INSERT_SAMPLE + SQLs.TESTSITES_VALUES_01);
+        SQL.insert(SQLs.TESTSITES_INSERT_SAMPLE + SQLs.TESTSITES_VALUES_02);
+        SQL.insert(SQLs.TESTSITES_INSERT_SAMPLE + SQLs.TESTSITES_VALUES_03);
+        SQL.insert(SQLs.TESTSITES_INSERT_SAMPLE + SQLs.TESTSITES_VALUES_04);
         LOG.info("Database table 'TESTSITES' populated with sample data");
     }
   }
@@ -75,8 +78,8 @@ public class DatabaseSetupService implements IDataStoreService {
 	  }
 	  
 	  if (CONFIG.getPropertyValue(DatabaseProperties.DatabaseAutoPopulateProperty.class)) {
-		  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_01);
-	      LOG.info("Database table 'HANRILIGHT' populated with sample data");
+		//  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_01);
+	    //  LOG.info("Database table 'HANRILIGHT' populated with sample data");
 	  }
   }
 

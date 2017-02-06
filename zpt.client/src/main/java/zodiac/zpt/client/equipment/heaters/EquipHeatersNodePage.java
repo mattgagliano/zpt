@@ -1,4 +1,4 @@
-package zodiac.zpt.client.equipment.lights;
+package zodiac.zpt.client.equipment.heaters;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNode
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class EquipLightsNodePage extends AbstractPageWithNodes {
+public class EquipHeatersNodePage extends AbstractPageWithNodes {
 
 	@Override
 	protected String getConfiguredTitle() {
-		return TEXTS.get("Lights");
+		return TEXTS.get("Heaters");
 	}
 
 	@Override
 	protected void execCreateChildPages(List<IPage<?>> pageList) {
-		super.execCreateChildPages(pageList);
-		pageList.add(new HanriLightNodePage());
+		pageList.add(new HiE2NodePage());
+		pageList.add(new JXiASMENodePage());
 	}
 }

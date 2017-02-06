@@ -17,10 +17,10 @@ public class AssignedTechLookupCall extends LocalLookupCall<String> {
 	    
 		List<LookupRow<String>> rows = new ArrayList<LookupRow<String>>();
 		
-		rows.add(new LookupRow<String>("DesroySmith", "Desroy Smith"));
-		rows.add(new LookupRow<String>("MattGagliano", "Matt Gagliano"));
-		rows.add(new LookupRow<String>("MattWeening", "Matt Weening"));
-		rows.add(new LookupRow<String>("RonLarson", "Ron Larson"));
+		rows.add(new LookupRow<String>("Desroy Smith", "Desroy Smith"));
+		rows.add(new LookupRow<String>("Matt Gagliano", "Matt Gagliano"));
+		rows.add(new LookupRow<String>("Matt Weening", "Matt Weening"));
+		rows.add(new LookupRow<String>("Ron Larson", "Ron Larson"));
 		
 		return rows;
 	}

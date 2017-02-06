@@ -6,16 +6,15 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNode
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class EquipLightsNodePage extends AbstractPageWithNodes {
+public class HanriLightNodePage extends AbstractPageWithNodes {
 
 	@Override
 	protected String getConfiguredTitle() {
-		return TEXTS.get("Lights");
+		return TEXTS.get("HanriLight0");
 	}
 
 	@Override
 	protected void execCreateChildPages(List<IPage<?>> pageList) {
-		super.execCreateChildPages(pageList);
-		pageList.add(new HanriLightNodePage());
+		pageList.add(new HanriLightTablePage());
 	}
 }

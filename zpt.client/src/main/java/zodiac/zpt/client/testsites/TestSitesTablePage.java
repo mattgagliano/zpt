@@ -8,6 +8,8 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.client.ui.form.FormEvent;
@@ -30,6 +32,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 		return TEXTS.get("TestSites");
 	}
 
+	@Override
+	protected boolean getConfiguredLeaf() {
+		return true;
+	}
+	
 	@Override
 	protected void execLoadData(SearchFilter filter) {
 		importPageData(BEANS.get(ITestSitesService.class).getTestSitesTableData(filter));
@@ -218,7 +225,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 110;
 			}
 		}
 
@@ -231,7 +238,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 110;
 			}
 		}
 
@@ -246,6 +253,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(4000)
@@ -257,7 +269,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 140;
 			}
 		}
 
@@ -270,7 +282,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 50;
 			}
 		}
 
@@ -283,7 +295,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 50;
 			}
 		}
 
@@ -296,7 +308,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 200;
 			}
 		}
 
@@ -304,7 +316,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 		public class PhoneColumn extends AbstractStringColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("PhoneNumber");
+				return TEXTS.get("Phone");
 			}
 
 			@Override
@@ -322,7 +334,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 120;
 			}
 			
 			/*@Override 
@@ -332,7 +344,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 		}
 
 		@Order(10000)
-		public class NDAIssueDateColumn extends AbstractStringColumn {
+		public class NDAIssueDateColumn extends AbstractDateColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
 				return TEXTS.get("NDAIssueDate");
@@ -340,7 +352,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 120;
 			}
 		}
 
@@ -355,6 +367,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(12000)
@@ -368,6 +385,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(13000)
@@ -380,6 +402,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 			
 		/*	@Override 
@@ -399,6 +426,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(15000)
@@ -411,6 +443,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -425,6 +462,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(17000)
@@ -436,7 +478,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 135;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 			
 		/*	@Override 
@@ -456,6 +503,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(19000)
@@ -468,6 +520,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -482,6 +539,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(21000)
@@ -494,6 +556,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -508,6 +575,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(23000)
@@ -519,7 +591,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 126;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -532,7 +609,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 124;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -545,7 +627,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 112;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -558,7 +645,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 133;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -571,12 +663,17 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 350;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
 		@Order(28000)
-		public class HasInfloorsColumn extends AbstractStringColumn {
+		public class HasInfloorsColumn extends AbstractBooleanColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
 				return TEXTS.get("HasInfloors");
@@ -584,7 +681,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 103;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -597,7 +699,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 110;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -610,46 +717,66 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 116;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
 		@Order(31000)
-		public class PressureRefColumn extends AbstractStringColumn {
+		public class PressureRefColumn extends AbstractBooleanColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("PressureReferencePool");
+				return TEXTS.get("PressureRef");
 			}
 
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
 		@Order(32000)
-		public class RoboticRefColumn extends AbstractStringColumn {
+		public class RoboticRefColumn extends AbstractBooleanColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("RoboticReferencePool");
+				return TEXTS.get("RoboticRef0");
 			}
 
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
 		@Order(33000)
-		public class SuctionRefColumn extends AbstractStringColumn {
+		public class SuctionRefColumn extends AbstractBooleanColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("SuctionReferencePool");
+				return TEXTS.get("SuctionRef");
 			}
 
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -662,7 +789,12 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 300;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -677,6 +809,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(36000)
@@ -689,6 +826,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -703,6 +845,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			protected int getConfiguredWidth() {
 				return 100;
 			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
 		}
 
 		@Order(38000)
@@ -715,6 +862,11 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 

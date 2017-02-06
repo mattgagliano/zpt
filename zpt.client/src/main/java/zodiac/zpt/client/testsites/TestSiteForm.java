@@ -754,6 +754,11 @@ private String siteId;
 					protected Integer getConfiguredMaxValue() {
 						return 999999;
 					}
+					
+					@Override
+					protected int getConfiguredHorizontalAlignment() {
+						return -1;
+					}
 				}
 
 				@Order(3000)
@@ -1235,7 +1240,7 @@ private String siteId;
 						
 						@Override
 						protected String getConfiguredRadioValue() {
-							return "Dedicated";
+							return "DedicatedLine";
 						}
 						
 						@Override
@@ -1248,7 +1253,7 @@ private String siteId;
 					public class ThruSkimmerButton extends AbstractRadioButton<String> {
 						@Override
 						protected String getConfiguredRadioValue() {
-							return "ThruSkimmer";
+							return "ThroughSkimmer";
 						}
 										
 						@Override

@@ -9,8 +9,6 @@ import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.util.CollectionUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-import zodiac.zpt.client.equipment.EquipmentOutline;
-import zodiac.zpt.client.testsites.TestSitesOutline;
 import zodiac.zpt.shared.Icons;
 
 /**
@@ -21,7 +19,7 @@ import zodiac.zpt.shared.Icons;
 public class Desktop extends AbstractDesktop {
 	@Override
 	protected String getConfiguredTitle() {
-		return TEXTS.get("ApplicationTitle");
+		return TEXTS.get("ZodiacTestPool");
 	}
 
 	@Override
@@ -31,8 +29,7 @@ public class Desktop extends AbstractDesktop {
 
 	@Override
 	protected List<Class<? extends IOutline>> getConfiguredOutlines() {
-		return CollectionUtility.<Class<? extends IOutline>>arrayList(TestSitesOutline.class,
-				EquipmentOutline.class);
+		return CollectionUtility.<Class<? extends IOutline>>arrayList(MainOutline.class);
 	}
 
 	@Override
@@ -105,13 +102,13 @@ public class Desktop extends AbstractDesktop {
 	}*/
 
 	@Order(1000)
-	public class TestSitesOutlineViewButton extends AbstractOutlineViewButton {
+	public class MainOutlineViewButton extends AbstractOutlineViewButton {
 
-		public TestSitesOutlineViewButton() {
-			this(TestSitesOutline.class);
+		public MainOutlineViewButton() {
+			this(MainOutline.class);
 		}
 
-		protected TestSitesOutlineViewButton(Class<? extends TestSitesOutline> outlineClass) {
+		protected MainOutlineViewButton(Class<? extends MainOutline> outlineClass) {
 			super(Desktop.this, outlineClass);
 		}
 		
@@ -142,7 +139,7 @@ public class Desktop extends AbstractDesktop {
 			return IKeyStroke.F3;
 		}
 	}
-*/
+
 	@Order(3000)
 	public class EquipmentOutlineViewButton extends AbstractOutlineViewButton {
 
@@ -158,5 +155,5 @@ public class Desktop extends AbstractDesktop {
 		protected DisplayStyle getConfiguredDisplayStyle() {
 			return DisplayStyle.MENU;
 		}
-	}
+	}*/
 }

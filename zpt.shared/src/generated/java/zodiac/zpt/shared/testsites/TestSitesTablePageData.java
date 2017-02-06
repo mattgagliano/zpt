@@ -1,5 +1,7 @@
 package zodiac.zpt.shared.testsites;
 
+import java.util.Date;
+
 import javax.annotation.Generated;
 
 import org.eclipse.scout.rt.shared.data.basic.table.AbstractTableRowData;
@@ -101,7 +103,7 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 		private String m_email;
 		private String m_phone;
 		private String m_assignedTech;
-		private String m_nDAIssueDate;
+		private Date m_nDAIssueDate;
 		private String m_poolPicURL;
 		private String m_equipPicURL;
 		private String m_poolLayout;
@@ -119,12 +121,12 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 		private String m_hasIAqualink;
 		private String m_iAqualinkDeviceNumber;
 		private String m_automationNotes;
-		private String m_hasInfloors;
+		private Boolean m_hasInfloors;
 		private String m_pressureType;
 		private String m_suctionType;
-		private String m_pressureRef;
-		private String m_roboticRef;
-		private String m_suctionRef;
+		private Boolean m_pressureRef;
+		private Boolean m_roboticRef;
+		private Boolean m_suctionRef;
 		private String m_cleanerNotes;
 		private String m_hasSolar;
 		private String m_gasType;
@@ -211,11 +213,11 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 			m_assignedTech = newAssignedTech;
 		}
 
-		public String getNDAIssueDate() {
+		public Date getNDAIssueDate() {
 			return m_nDAIssueDate;
 		}
 
-		public void setNDAIssueDate(String newNDAIssueDate) {
+		public void setNDAIssueDate(Date newNDAIssueDate) {
 			m_nDAIssueDate = newNDAIssueDate;
 		}
 
@@ -355,11 +357,11 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 			m_automationNotes = newAutomationNotes;
 		}
 
-		public String getHasInfloors() {
+		public Boolean getHasInfloors() {
 			return m_hasInfloors;
 		}
 
-		public void setHasInfloors(String newHasInfloors) {
+		public void setHasInfloors(Boolean newHasInfloors) {
 			m_hasInfloors = newHasInfloors;
 		}
 
@@ -379,27 +381,27 @@ public class TestSitesTablePageData extends AbstractTablePageData {
 			m_suctionType = newSuctionType;
 		}
 
-		public String getPressureRef() {
+		public Boolean getPressureRef() {
 			return m_pressureRef;
 		}
 
-		public void setPressureRef(String newPressureRef) {
+		public void setPressureRef(Boolean newPressureRef) {
 			m_pressureRef = newPressureRef;
 		}
 
-		public String getRoboticRef() {
+		public Boolean getRoboticRef() {
 			return m_roboticRef;
 		}
 
-		public void setRoboticRef(String newRoboticRef) {
+		public void setRoboticRef(Boolean newRoboticRef) {
 			m_roboticRef = newRoboticRef;
 		}
 
-		public String getSuctionRef() {
+		public Boolean getSuctionRef() {
 			return m_suctionRef;
 		}
 
-		public void setSuctionRef(String newSuctionRef) {
+		public void setSuctionRef(Boolean newSuctionRef) {
 			m_suctionRef = newSuctionRef;
 		}
 
