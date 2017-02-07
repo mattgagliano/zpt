@@ -17,10 +17,10 @@ public class HanriLightColorLookupCall extends LocalLookupCall<String> {
 	    
 		List<LookupRow<String>> rows = new ArrayList<LookupRow<String>>();
 		
-		rows.add(new LookupRow<String>("AlpineWhite", "Alpine White"));
-		rows.add(new LookupRow<String>("FastColorSplash", "Fast Color Splash"));
-		rows.add(new LookupRow<String>("AmericaTheBeautiful", "America The Beautiful"));
-		rows.add(new LookupRow<String>("FatTuesday", "Fat Tuesday"));
+		rows.add(new LookupRow<String>("Alpine White", "Alpine White"));
+		rows.add(new LookupRow<String>("Fast Color Splash", "Fast Color Splash"));
+		rows.add(new LookupRow<String>("America The Beautiful", "America The Beautiful"));
+		rows.add(new LookupRow<String>("Fat Tuesday", "Fat Tuesday"));
 		
 		return rows;
 	}

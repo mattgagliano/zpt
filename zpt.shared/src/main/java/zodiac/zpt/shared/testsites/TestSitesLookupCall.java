@@ -17,10 +17,10 @@ public class TestSitesLookupCall extends LocalLookupCall<String> {
 	    
 		List<LookupRow<String>> rows = new ArrayList<LookupRow<String>>();
 		
-		rows.add(new LookupRow<String>("HoughGary", "Gary Hough"));
-		rows.add(new LookupRow<String>("JamesHartman", "James Hartman"));
-		rows.add(new LookupRow<String>("MichaelJavier", "Michael Javier"));
-		rows.add(new LookupRow<String>("DanLukasik", "Dan Lukasik"));
+		rows.add(new LookupRow<String>("Gary Hough", "Gary Hough"));
+		rows.add(new LookupRow<String>("James Hartman", "James Hartman"));
+		rows.add(new LookupRow<String>("Michael Javier", "Michael Javier"));
+		rows.add(new LookupRow<String>("Dan Lukasik", "Dan Lukasik"));
 		
 		return rows;
 	}

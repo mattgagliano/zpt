@@ -26,6 +26,6 @@ public class ConfigOutline extends AbstractOutline {
 	
 	@Override
 	protected String getConfiguredTitle() {
-		return TEXTS.get("TestPoolDatabase");
+		return TEXTS.get("Configuration");
 	}
 }

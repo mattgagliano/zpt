@@ -267,7 +267,7 @@ public class HanriInstallLogForm extends AbstractForm {
 		public class OnAutomationField extends AbstractBooleanField {
 			@Override
 			protected String getConfiguredLabel() {
-				return TEXTS.get("OnAuto");
+				return TEXTS.get("OnAutomation0");
 			}
 		}
 
