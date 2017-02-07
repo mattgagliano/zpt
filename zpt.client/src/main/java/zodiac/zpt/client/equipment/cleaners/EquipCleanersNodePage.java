@@ -12,6 +12,11 @@ public class EquipCleanersNodePage extends AbstractPageWithNodes {
 	protected String getConfiguredTitle() {
 		return TEXTS.get("Cleaners");
 	}
+	
+	@Override
+	protected boolean getConfiguredExpanded() {
+		return true;
+	}
 
 	@Override
 	protected void execCreateChildPages(List<IPage<?>> pageList) {

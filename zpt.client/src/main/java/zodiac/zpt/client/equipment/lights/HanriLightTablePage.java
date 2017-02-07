@@ -8,6 +8,7 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -55,8 +56,8 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 			return getColumnSet().getColumnByClass(VoltageGroupColumn.class);
 		}
 
-		public OnAutomationBoxColumn getOnAutomationBoxColumn() {
-			return getColumnSet().getColumnByClass(OnAutomationBoxColumn.class);
+		public OnAutomationColumn getOnAutomationColumn() {
+			return getColumnSet().getColumnByClass(OnAutomationColumn.class);
 		}
 
 		public RunHoursColumn getRunHoursColumn() {
@@ -130,7 +131,7 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 88;
 			}
 		}
 
@@ -138,7 +139,7 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 		public class InstallerNamesColumn extends AbstractStringColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("InstallerNames");
+				return TEXTS.get("Installer");
 			}
 
 			@Override
@@ -156,7 +157,7 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 88;
 			}
 		}
 
@@ -169,7 +170,7 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 62;
 			}
 		}
 
@@ -177,38 +178,39 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 		public class NicheSizeBoxColumn extends AbstractStringColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("NicheSize");
+				return TEXTS.get("Niche");
 			}
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 68;
 			}
 		}
 
 		@Order(8000)
-		public class OnAutomationBoxColumn extends AbstractStringColumn {
+		public class OnAutomationColumn extends AbstractBooleanColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("OnAutomation");
+				return TEXTS.get("OnAuto");
 			}
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 78;
 			}
 		}
 
+		
 		@Order(9000)
 		public class RunHoursColumn extends AbstractIntegerColumn {
 			@Override
 			protected String getConfiguredHeaderText() {
-				return TEXTS.get("DailyRunHours");
+				return TEXTS.get("RunHrDay");
 			}
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 88;
 			}
 		}
 
@@ -221,7 +223,12 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 122;
+			}
+			
+			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
 			}
 		}
 
@@ -234,7 +241,7 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 88;
 			}
 		}
 
@@ -247,7 +254,7 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 112;
 			}
 		}
 
@@ -260,7 +267,7 @@ public class HanriLightTablePage extends AbstractPageWithTable<HanriLightTablePa
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 100;
+				return 355;
 			}
 		}	
 		

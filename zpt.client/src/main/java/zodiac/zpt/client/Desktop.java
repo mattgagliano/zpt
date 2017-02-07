@@ -2,9 +2,12 @@ package zodiac.zpt.client;
 
 import java.util.List;
 
+import org.eclipse.scout.rt.client.session.ClientSessionProvider;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
+import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.util.CollectionUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -19,7 +22,7 @@ import zodiac.zpt.shared.Icons;
 public class Desktop extends AbstractDesktop {
 	@Override
 	protected String getConfiguredTitle() {
-		return TEXTS.get("ZodiacTestPool");
+		return TEXTS.get("CloudZ");
 	}
 
 	@Override
@@ -29,7 +32,8 @@ public class Desktop extends AbstractDesktop {
 
 	@Override
 	protected List<Class<? extends IOutline>> getConfiguredOutlines() {
-		return CollectionUtility.<Class<? extends IOutline>>arrayList(MainOutline.class);
+		return CollectionUtility.<Class<? extends IOutline>>arrayList(ConfigOutline.class,
+				MainOutline.class);
 	}
 
 	@Override
@@ -47,12 +51,12 @@ public class Desktop extends AbstractDesktop {
 		}
 	}
 
-/*	@Order(1000)
+	@Order(1000)
 	public class FileMenu extends AbstractMenu {
 
 		@Override
 		protected String getConfiguredText() {
-			return TEXTS.get("File");
+			return TEXTS.get("User");
 		}
 
 		@Order(1000)
@@ -60,20 +64,13 @@ public class Desktop extends AbstractDesktop {
 
 			@Override
 			protected String getConfiguredText() {
-				return TEXTS.get("Exit");
+				return TEXTS.get("Log Out");
 			}
 
 			@Override
 			protected void execAction() {
 				ClientSessionProvider.currentSession(ClientSession.class).stop();
 			}
-		}
-	}
-
-	@Order(2000)
-	public class BookmarkMenu extends AbstractBookmarkMenu {
-		public BookmarkMenu() {
-			super(Desktop.this);
 		}
 	}
 
@@ -99,7 +96,7 @@ public class Desktop extends AbstractDesktop {
 				form.startModify();
 			}
 		}
-	}*/
+	}
 
 	@Order(1000)
 	public class MainOutlineViewButton extends AbstractOutlineViewButton {
@@ -114,18 +111,23 @@ public class Desktop extends AbstractDesktop {
 		
 		@Override
 		protected DisplayStyle getConfiguredDisplayStyle() {
-			return DisplayStyle.MENU;
+			return DisplayStyle.TAB;
+		}
+		
+		@Override
+		public String getIconId() {			
+			return Icons.World;
 		}
 	}
 
-/*	@Order(2000)
-	public class SearchOutlineViewButton extends AbstractOutlineViewButton {
+	@Order(2000)
+	public class ConfigOutlineViewButton extends AbstractOutlineViewButton {
 
-		public SearchOutlineViewButton() {
-			this(SearchOutline.class);
+		public ConfigOutlineViewButton() {
+			this(ConfigOutline.class);
 		}
 
-		protected SearchOutlineViewButton(Class<? extends SearchOutline> outlineClass) {
+		protected ConfigOutlineViewButton(Class<? extends ConfigOutline> outlineClass) {
 			super(Desktop.this, outlineClass);
 		}
 
@@ -133,27 +135,10 @@ public class Desktop extends AbstractDesktop {
 		protected DisplayStyle getConfiguredDisplayStyle() {
 			return DisplayStyle.TAB;
 		}
-
+		
 		@Override
-		protected String getConfiguredKeyStroke() {
-			return IKeyStroke.F3;
+		public String getIconId() {			
+			return Icons.Gear;
 		}
 	}
-
-	@Order(3000)
-	public class EquipmentOutlineViewButton extends AbstractOutlineViewButton {
-
-		public EquipmentOutlineViewButton() {
-			this(EquipmentOutline.class);
-		}
-
-		protected EquipmentOutlineViewButton(Class<? extends EquipmentOutline> outlineClass) {
-			super(Desktop.this, outlineClass);
-		}
-
-		@Override
-		protected DisplayStyle getConfiguredDisplayStyle() {
-			return DisplayStyle.MENU;
-		}
-	}*/
 }

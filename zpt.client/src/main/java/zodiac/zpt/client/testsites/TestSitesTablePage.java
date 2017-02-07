@@ -269,7 +269,7 @@ public class TestSitesTablePage extends AbstractPageWithTable<Table> {
 
 			@Override
 			protected int getConfiguredWidth() {
-				return 140;
+				return 76;
 			}
 		}
 

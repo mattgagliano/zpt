@@ -12,6 +12,11 @@ public class EquipHeatersNodePage extends AbstractPageWithNodes {
 	protected String getConfiguredTitle() {
 		return TEXTS.get("Heaters");
 	}
+	
+	@Override
+	protected boolean getConfiguredExpanded() {
+		return true;
+	}
 
 	@Override
 	protected void execCreateChildPages(List<IPage<?>> pageList) {

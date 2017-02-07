@@ -18,4 +18,9 @@ public class EquipLightsNodePage extends AbstractPageWithNodes {
 		super.execCreateChildPages(pageList);
 		pageList.add(new HanriLightNodePage());
 	}
+	
+	@Override
+	protected boolean getConfiguredExpanded() {
+		return true;
+	}
 }

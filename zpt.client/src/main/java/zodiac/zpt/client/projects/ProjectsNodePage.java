@@ -18,6 +18,11 @@ public class ProjectsNodePage extends AbstractPageWithNodes {
 	}
 
 	@Override
+	protected boolean getConfiguredExpanded() {
+		return true;
+	}
+	
+	@Override
 	protected void execCreateChildPages(List<IPage<?>> pageList) {
 		pageList.add(new EquipCleanersNodePage());
 		pageList.add(new EquipHeatersNodePage());

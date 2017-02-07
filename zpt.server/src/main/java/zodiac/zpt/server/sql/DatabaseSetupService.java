@@ -78,8 +78,12 @@ public class DatabaseSetupService implements IDataStoreService {
 	  }
 	  
 	  if (CONFIG.getPropertyValue(DatabaseProperties.DatabaseAutoPopulateProperty.class)) {
-		//  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_01);
-	    //  LOG.info("Database table 'HANRILIGHT' populated with sample data");
+		  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_01);
+		  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_02);
+		  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_03);
+		  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_04);
+		  SQL.insert(SQLs.HANRILIGHT_INSERT_SAMPLE + SQLs.HANRILIGHT_VALUES_05);
+		  LOG.info("Database table 'HANRILIGHT' populated with sample data");
 	  }
   }
 

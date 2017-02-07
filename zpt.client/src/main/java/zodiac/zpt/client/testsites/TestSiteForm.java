@@ -924,6 +924,11 @@ private String siteId;
 					protected int getConfiguredLabelPosition() {
 						return LABEL_POSITION_TOP;
 					}
+					
+					@Override
+					protected boolean getConfiguredWrapText() {
+						return true;
+					}
 				}
 
 				@Order(7000)
@@ -946,6 +951,11 @@ private String siteId;
 					@Override
 					protected int getConfiguredLabelPosition() {
 						return LABEL_POSITION_TOP;
+					}
+					
+					@Override
+					protected boolean getConfiguredWrapText() {
+						return true;
 					}
 				}
 			}
@@ -1136,6 +1146,11 @@ private String siteId;
 					protected int getConfiguredGridH() {
 						return 8;
 					}
+					
+					@Override
+					protected boolean getConfiguredWrapText() {
+						return true;
+					}
 				}
 			}
 
@@ -1321,6 +1336,11 @@ private String siteId;
 					protected int getConfiguredLabelPosition() {
 						return LABEL_POSITION_TOP;
 					}
+					
+					@Override
+					protected boolean getConfiguredWrapText() {
+						return true;
+					}
 				}
 			}
 
@@ -1436,6 +1456,11 @@ private String siteId;
 					protected int getConfiguredLabelPosition() {
 						return LABEL_POSITION_TOP;
 					}
+					
+					@Override
+					protected boolean getConfiguredWrapText() {
+						return true;
+					}
 				}
 			}
 			
@@ -1466,6 +1491,11 @@ private String siteId;
 					@Override
 					protected int getConfiguredLabelPosition() {
 						return LABEL_POSITION_TOP;
+					}
+					
+					@Override
+					protected boolean getConfiguredWrapText() {
+						return true;
 					}
 				}
 			}

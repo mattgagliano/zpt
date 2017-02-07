@@ -61,7 +61,7 @@ public class HanriLightTablePageData extends AbstractTablePageData {
 		public static final String serial = "serial";
 		public static final String voltageGroup = "voltageGroup";
 		public static final String nicheSizeBox = "nicheSizeBox";
-		public static final String onAutomationBox = "onAutomationBox";
+		public static final String onAutomation = "onAutomation";
 		public static final String runHours = "runHours";
 		public static final String lightColor = "lightColor";
 		public static final String sequenceCorrectBox = "sequenceCorrectBox";
@@ -74,7 +74,7 @@ public class HanriLightTablePageData extends AbstractTablePageData {
 		private String m_serial;
 		private String m_voltageGroup;
 		private String m_nicheSizeBox;
-		private String m_onAutomationBox;
+		private Boolean m_onAutomation;
 		private Integer m_runHours;
 		private String m_lightColor;
 		private String m_sequenceCorrectBox;
@@ -137,12 +137,12 @@ public class HanriLightTablePageData extends AbstractTablePageData {
 			m_nicheSizeBox = newNicheSizeBox;
 		}
 
-		public String getOnAutomationBox() {
-			return m_onAutomationBox;
+		public Boolean getOnAutomation() {
+			return m_onAutomation;
 		}
 
-		public void setOnAutomationBox(String newOnAutomationBox) {
-			m_onAutomationBox = newOnAutomationBox;
+		public void setOnAutomation(Boolean newOnAutomation) {
+			m_onAutomation = newOnAutomation;
 		}
 
 		public Integer getRunHours() {

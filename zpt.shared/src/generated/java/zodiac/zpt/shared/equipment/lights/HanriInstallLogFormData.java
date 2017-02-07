@@ -56,8 +56,8 @@ public class HanriInstallLogFormData extends AbstractFormData {
 		return getFieldByClass(Notes.class);
 	}
 
-	public OnAutomationBox getOnAutomationBox() {
-		return getFieldByClass(OnAutomationBox.class);
+	public OnAutomation getOnAutomation() {
+		return getFieldByClass(OnAutomation.class);
 	}
 
 	public RunHours getRunHours() {
@@ -114,7 +114,7 @@ public class HanriInstallLogFormData extends AbstractFormData {
 		private static final long serialVersionUID = 1L;
 	}
 
-	public static class OnAutomationBox extends AbstractValueFieldData<String> {
+	public static class OnAutomation extends AbstractValueFieldData<Boolean> {
 
 		private static final long serialVersionUID = 1L;
 	}

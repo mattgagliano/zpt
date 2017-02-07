@@ -29,12 +29,12 @@ public interface SQLs {
 		  + "          serial VARCHAR(64), "
 		  + "          voltage VARCHAR(64), "
 		  + "          nichesize VARCHAR(64), "
-		  + "          onautomation VARCHAR(64), "
+		  + "          onautomation BOOLEAN, "
 		  + "          runhours VARCHAR(64), "
 		  + "          lightcolor VARCHAR(64), "
 		  + "          sequencecorrect VARCHAR(64), "
 		  + "          waterintrusion VARCHAR(64), "
-		  + "          notes VARCHAR(64) "
+		  + "          notes VARCHAR(512) "
 		  + "          )";
 		  
   String TESTSITES_CREATE_TABLE = ""
@@ -227,7 +227,7 @@ public interface SQLs {
 		  + "         :Serial, "
 		  + "         :VoltageGroup, "
 		  + "         :NicheSizeBox, "
-		  + "         :OnAutomationBox, "
+		  + "         :OnAutomation, "
 		  + "         :RunHours, "
 		  + "         :LightColor, "
 		  + "         :SequenceCorrectBox, "
@@ -322,7 +322,7 @@ public interface SQLs {
 		  + "         serial = :Serial, "
 		  + "         voltage = :VoltageGroup, "
 		  + "         nichesize = :NicheSizeBox, "
-		  + "         onautomation = :OnAutomationBox, "
+		  + "         onautomation = :OnAutomation, "
 		  + "         runhours = :RunHours, "
 		  + "         lightcolor = :LightColor, "
 		  + "         sequencecorrect = :SequenceCorrectBox, "
@@ -380,7 +380,7 @@ public interface SQLs {
 		  + "         :{page.Serial}, "
 		  + "         :{page.VoltageGroup}, "
 		  + "         :{page.NicheSizeBox}, "
-		  + "         :{page.OnAutomationBox}, "
+		  + "         :{page.OnAutomation}, "
 		  + "         :{page.RunHours}, "
 		  + "         :{page.LightColor}, "
 		  + "         :{page.SequenceCorrectBox}, "
@@ -430,19 +430,80 @@ public interface SQLs {
   
   String HANRILIGHT_VALUES_01 = ""
 		  + "VALUES  ('hanrilight01', "
-		  + "         'DanLukasik', "
-		  + "         '', "
-		  + "         'MattGagliano', "
-		  + "         's3r1alkhkj', "
-		  + "         'Low-12V', "
-		  + "         'SpaSize', "
-		  + "         'Yes', "
-		  + "         '9', "	  
-		  + "         'AlpineWhite', "
-		  + "         'NoIssue', "
-		  + "         'NoIssue', "
-		  + "         'Notesnotesnotes')";
-
+		  + "         'Dan Lukasik', "             //site
+		  + "         '2017-01-07 00:00:00', "      //inst date
+		  + "         'Matt Gagliano', "//inst name
+		  + "         'AX2PHV150', "//serial
+		  + "         'High', "//voltage
+		  + "         'Pool Size', "//size
+		  + "         'false', "//onautomation
+		  + "         '9', "	  //runhours
+		  + "         'Alpine White', "//color
+		  + "         'Has Issue', "//seq
+		  + "         'No Issue', "//intrusion
+		  + "         'Alpine white looks great, however during the America the beautiful sequence white looks pink')";
+ 
+  String HANRILIGHT_VALUES_02 = ""
+		  + "VALUES  ('hanrilight02', "
+		  + "         'Dan Lukasik', "             //site
+		  + "         '2017-01-07 00:00:00', "      //inst date
+		  + "         'Matt Gagliano', "//inst name
+		  + "         'AX2PHV151', "//serial
+		  + "         'High', "//voltage
+		  + "         'Pool Size', "//size
+		  + "         'false', "//onautomation
+		  + "         '9', "	  //runhours
+		  + "         'Alpine White', "//color
+		  + "         'Has Issue', "//seq
+		  + "         'No Issue', "//intrusion
+		  + "         'Issue with white, see other pool light install log')";
+  
+  String HANRILIGHT_VALUES_03 = ""
+		  + "VALUES  ('hanrilight03', "
+		  + "         'Gary Hough', "             //site
+		  + "         '2017-01-07 00:00:00', "      //inst date
+		  + "         'Desroy Smith', "//inst name
+		  + "         'AX2SHV250', "//serial
+		  + "         'High', "//voltage
+		  + "         'Spa Size', "//size
+		  + "         'true', "//onautomation
+		  + "         '4', "	  //runhours
+		  + "         'Fat Tuesday', "//color
+		  + "         'No Issue', "//seq
+		  + "         'No Issue', "//intrusion
+		  + "         'Tough pull. Power cord housing has dull, high friction finish. Normally light cords are slicker.')";
+  
+  String HANRILIGHT_VALUES_04 = ""
+		  + "VALUES  ('hanrilight04', "
+		  + "         'Michael Javier', "             //site
+		  + "         '2017-02-02 00:00:00', "      //inst date
+		  + "         'Ron Larson', "//inst name
+		  + "         'AX2PHV150', "//serial
+		  + "         'Low', "//voltage
+		  + "         'Pool Size', "//size
+		  + "         'true', "//onautomation
+		  + "         '3', "	  //runhours
+		  + "         'Fast Color Splash', "//color
+		  + "         'Has Issue', "//seq
+		  + "         'No Issue', "//intrusion
+		  + "         'Light sequence out of sync with older watercolors LED pool light')";
+ 
+  String HANRILIGHT_VALUES_05 = ""
+		  + "VALUES  ('hanrilight05', "
+		  + "         'Michael Javier', "             //site
+		  + "         '2017-02-02 00:00:00', "      //inst date
+		  + "         'Ron Larson', "//inst name
+		  + "         'AX2PHV151', "//serial
+		  + "         'Low', "//voltage
+		  + "         'Spa Size', "//size
+		  + "         'true', "//onautomation
+		  + "         '3', "	  //runhours
+		  + "         'Fast Color Splash', "//color
+		  + "         'Has Issue', "//seq
+		  + "         'No Issue', "//intrusion
+		  + "         'In sync with other new hanri light, both of which are out of sync with old watercolors LED light')";
+  
+  
   String TESTSITES_VALUES_01 = ""
 	  + "VALUES  ('site01', "
 	  + "         'Smith', "
@@ -530,12 +591,12 @@ public interface SQLs {
 		  + "         'Dean', "
 		  + "         'James', "
 		  + "         '123 Country Ln', "
-		  + "         'Louisville', "
-		  + "         'KY', "
-		  + "         '12435', "
+		  + "         'San Diego', "
+		  + "         'CA', "
+		  + "         '92117', "
 		  + "         'deantestpool03@zodiac.com', "
 		  + "         '4933343732', "	  
-		  + "         'Desroy Smith', "
+		  + "         'Ron Larson', "
 		  + "         '2015-06-27 00:00:00', "
 		  + "         'https://smedia.webcollage.net/rwvfp/wc/cp/19973657/module/cpwalmart/_cp/products/1422033570306/tab-c21aa757-58eb-48d1-85bc-6e7b5e2ca5d0/d4dca34a-9275-4ccd-a3f7-f40d1db08a9f.jpg.w960.jpg', "
 		  + "         'http://cdn2.hubspot.net/hub/87744/file-15819953-jpg/images/typical_equipment_setup.jpg', "

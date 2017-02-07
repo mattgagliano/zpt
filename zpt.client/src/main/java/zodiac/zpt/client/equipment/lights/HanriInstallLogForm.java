@@ -4,6 +4,7 @@ import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.IForm;
+import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton;
@@ -25,7 +26,7 @@ import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.LightColor
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.NicheSizeBox;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.NotesField;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.OkButton;
-import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.OnAutomationBox;
+import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.OnAutomationField;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.RunHoursField;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.SequenceCorrectBox;
 import zodiac.zpt.client.equipment.lights.HanriInstallLogForm.MainBox.SerialField;
@@ -107,10 +108,6 @@ public class HanriInstallLogForm extends AbstractForm {
 		return getFieldByClass(VoltageGroup.class);
 	}
 
-	public OnAutomationBox getOnAutomationBox() {
-		return getFieldByClass(OnAutomationBox.class);
-	}
-
 	public LightColorField getLightColorField() {
 		return getFieldByClass(LightColorField.class);
 	}
@@ -125,6 +122,10 @@ public class HanriInstallLogForm extends AbstractForm {
 
 	public NotesField getNotesField() {
 		return getFieldByClass(NotesField.class);
+	}
+
+	public OnAutomationField getOnAutomationField() {
+		return getFieldByClass(OnAutomationField.class);
 	}
 
 	public NicheSizeBox getNicheSizeBox() {
@@ -204,12 +205,12 @@ public class HanriInstallLogForm extends AbstractForm {
 			public class LowVButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "Low - 12V";
+					return "Low";
 				}
 				
 				@Override
 				protected String getConfiguredLabel() {
-					return TEXTS.get("Low-12V");
+					return TEXTS.get("Low");
 				}
 			}
 
@@ -217,12 +218,12 @@ public class HanriInstallLogForm extends AbstractForm {
 			public class HighVButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "High - 120V";
+					return "High";
 				}
 				
 				@Override
 				protected String getConfiguredLabel() {
-					return TEXTS.get("High-120V");
+					return TEXTS.get("High");
 				}
 			}			
 		}
@@ -231,19 +232,19 @@ public class HanriInstallLogForm extends AbstractForm {
 		public class NicheSizeBox extends AbstractRadioButtonGroup<String> {
 			@Override
 			protected String getConfiguredLabel() {
-				return TEXTS.get("NicheSize");
+				return TEXTS.get("Niche");
 			}
 
 			@Order(1000)
 			public class PoolSizeButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "PoolSize";
+					return "Pool Size";
 				}
 				
 				@Override
 				protected String getConfiguredLabel() {
-					return TEXTS.get("Pool");
+					return TEXTS.get("PoolSize");
 				}
 			}
 
@@ -251,49 +252,26 @@ public class HanriInstallLogForm extends AbstractForm {
 			public class SpaSizeButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "SpaSize";
+					return "Spa Size";
 				}
 				
 				@Override
 				protected String getConfiguredLabel() {
-					return TEXTS.get("Spa");
+					return TEXTS.get("SpaSize0");
 				}
 			}
 		}
+
 
 		@Order(7000)
-		public class OnAutomationBox extends AbstractRadioButtonGroup<String> {
+		public class OnAutomationField extends AbstractBooleanField {
 			@Override
 			protected String getConfiguredLabel() {
-				return TEXTS.get("OnAutomation");
-			}
-
-			@Order(1000)
-			public class YesAutomationButton extends AbstractRadioButton<String> {
-				@Override
-				protected String getConfiguredRadioValue() {
-					return "OnAuto";
-				}
-				
-				@Override
-				protected String getConfiguredLabel() {
-					return TEXTS.get("Yes");
-				}
-			}
-
-			@Order(2000)
-			public class NoAutomationButton extends AbstractRadioButton<String> {
-				@Override
-				protected String getConfiguredRadioValue() {
-					return "NoAuto";
-				}
-				
-				@Override
-				protected String getConfiguredLabel() {
-					return TEXTS.get("No-SeeNotes");
-				}
+				return TEXTS.get("OnAuto");
 			}
 		}
+
+		
 
 		@Order(8000)
 		public class RunHoursField extends AbstractIntegerField {
@@ -337,12 +315,12 @@ public class HanriInstallLogForm extends AbstractForm {
 			public class CorrectButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "SeqGood";
+					return "No Issue";
 				}
 				
 				@Override
 				protected String getConfiguredLabel() {
-					return TEXTS.get("Working");
+					return TEXTS.get("NoIssue");
 				}
 			}
 
@@ -350,7 +328,7 @@ public class HanriInstallLogForm extends AbstractForm {
 			public class HasIssueButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "SeqBad";
+					return "Has Issue";
 				}
 				
 				@Override
@@ -368,15 +346,15 @@ public class HanriInstallLogForm extends AbstractForm {
 			}
 
 			@Order(1000)
-			public class NoSignButton extends AbstractRadioButton<String> {
+			public class CorrectButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "NoIntrusion";
+					return "No Issue";
 				}
 				
 				@Override
 				protected String getConfiguredLabel() {
-					return TEXTS.get("NoSigns");
+					return TEXTS.get("NoIssue");
 				}
 			}
 
@@ -384,7 +362,7 @@ public class HanriInstallLogForm extends AbstractForm {
 			public class HasIssueButton extends AbstractRadioButton<String> {
 				@Override
 				protected String getConfiguredRadioValue() {
-					return "YesIntrusion";
+					return "Has Issue";
 				}
 				
 				@Override
@@ -409,6 +387,11 @@ public class HanriInstallLogForm extends AbstractForm {
 			@Override
 			protected int getConfiguredGridH() {
 				return 3;
+			}
+			
+			@Override
+			protected boolean getConfiguredWrapText() {
+				return true;
 			}
 		}
 		
