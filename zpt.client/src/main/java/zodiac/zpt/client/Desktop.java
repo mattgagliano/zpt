@@ -64,7 +64,7 @@ public class Desktop extends AbstractDesktop {
 
 			@Override
 			protected String getConfiguredText() {
-				return TEXTS.get("Log Out");
+				return TEXTS.get("LogOut");
 			}
 
 			@Override
